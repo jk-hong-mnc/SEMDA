@@ -6,7 +6,7 @@ This GitHub repository implements the paper named **SemDA: Communication-Efficie
 * Paper: https://ieeexplore.ieee.org/abstract/document/10446003?casa_token=cq1B6t3xzfoAAAAA:6ZknCKj4BokgpUMEeSiQlSZArNOw8hSpJdZPFseYB5-B27NjBva7SoMACIVDiB96LojOcw0eCLc
 * ns3-ai: https://github.com/hust-diangroup/ns3-ai
 
-## ns3-ai Environment Setup
+## Environment Setup
 1. ns3-ai Environment Setup
 
 
