@@ -82,15 +82,33 @@ cd YOUR_NS3_DIRECTORY
 git clone https://github.com/jk-hong-mnc/SEMDA.git scratch/SEMDA
 ```
 
+2. Install the required Python library
+```bash
+pip3 install torch torchvision numpy
+```
+
 ## Code Execution
-1. Build for SEMDA code in ns-3 base directory
+1. Modify the directory of image and model weights to match the path in your Ubuntu environment
+
+* `SEMDA/sim.cc` line 315-316
+```bash
+std::string imagePath_n0 = "/home/ns3ai/ns-allinone-3.35/ns-3.35/scratch/SEMDA/data/test_dataset.bin";
+std::string imagePath_n1 = "/home/ns3ai/ns-allinone-3.35/ns-3.35/scratch/SEMDA/data/test_dataset_transformed.bin";
+```
+
+* `SEMDA/run.py` line 189
+```bash
+model_dir = "/home/ns3ai/ns-allinone-3.35/ns-3.35/scratch/SEMDA/weight/"
+```
+
+3. Build for SEMDA code in ns-3 base directory
 ```bash
 cd YOUR_NS3_DIRECTORY
 ./waf configure
 ./waf build
 ```
 
-2. After activating the conda virtual environment, run the simulation at `scratch/SEMDA` **(Only one terminal is required to run the simulation.)**
+3. After activating the conda virtual environment, run the simulation at `scratch/SEMDA` **(Only one terminal is required to run the simulation.)**
 ```bash
 conda activate ns3ai
 cd YOUR_NS3_DIRECTORY
