@@ -115,3 +115,6 @@ cd YOUR_NS3_DIRECTORY
 cd scratch/SEMDA
 python3 run.py --image_number=10
 ```
+You can check the semantic network operation process in the terminal
+
+![Image](https://github.com/user-attachments/assets/afba1b06-21c1-4e3f-8f84-49603f6d20be)
