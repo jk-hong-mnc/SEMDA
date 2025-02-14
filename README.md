@@ -22,7 +22,7 @@ sudo apt-get install g++ cmake ninja-build git ccache pkg-config sqlite3 qtbase5
   * Unzip the downloaded file and change the extracted folder name from ns3-ai-master to **ns3-ai**
   * Move the ns3-ai folder to `ns-3.35/contrib/ns3-ai`
 
-**2. Anaconda Virtual Environment Setup**
+**2. Anaconda Virtual Environment Setup (Highly recommended!!!!)**
 
 Install Anaconda
 ```bash
