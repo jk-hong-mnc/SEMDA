@@ -137,7 +137,7 @@ class Encoder_input_image(Structure):
 class Encoder_output_feature(Structure):
     _pack_ = 1
     _fields_ = [
-        ('feature', c_float * 500)  # 1000-byte feature vector
+        ('feature', c_float * 500)  # 2000-byte feature vector
     ]
 
 class Encoder_target(Structure):
@@ -150,7 +150,7 @@ class Encoder_target(Structure):
 class Decoder_input_feature(Structure):
     _pack_ = 1
     _fields_ = [
-        ('feature', c_float * 1000)  # Feature length (1000 bytes)
+        ('feature', c_float * 1000)  # Feature length (total 4000 bytes)
     ]
 
 class Decoder_output_feature(Structure):
@@ -186,7 +186,7 @@ if __name__ == "__main__":
     encoder2_model.to(device)
     decoder_model.to(device)
 
-    model_dir = "/home/ns3ai/ns-allinone-3.35/ns-3.35/scratch/SEMDA/weight/"
+    model_dir = "/home/ns3/ns-allinone-3.35/ns-3.35/scratch/SEMDA/weight/"
     encoder1_model.load_state_dict(torch.load(model_dir + "encoder1.txt", map_location=torch.device('cpu'), weights_only=True))
     encoder2_model.load_state_dict(torch.load(model_dir + "encoder2.txt", map_location=torch.device('cpu'), weights_only=True))
     decoder_model.load_state_dict(torch.load(model_dir + "decoder.txt", map_location=torch.device('cpu'), weights_only=True))
