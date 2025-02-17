@@ -25,7 +25,7 @@ struct Encoder_input_image
 
 struct Encoder_output_feature
 {
-    float feature[500]; // python에서 ns-3로 보내는 1000 바이트 크기의 feature
+    float feature[500]; // python에서 ns-3로 보내는 2000 바이트 크기의 feature
 } Packed;
 
 struct Encoder_target
@@ -95,7 +95,7 @@ void Encoder::ReceiveFeature(float *featureBuffer, int sender)
 // 디코더를 위한 교환 데이터 구조 정의
 struct Decoder_input_feature
 {
-    float feature[1000]; // ns-3에서 python으로 보내는 2000 바이트 크기의 feature (n0가 보낸 1000 바이트 + n1가 보낸 1000 바티으)
+    float feature[1000]; // ns-3에서 python으로 보내는 4000 바이트 크기의 feature (n0가 보낸 2000 바이트 + n1가 보낸 2000 바이트)
 } Packed;
 
 struct Decoder_pred
@@ -312,8 +312,8 @@ void Wait_Decoder_at_n1(std::string imagePath, int imageIndex, int image_number,
 // 메인 시뮬레이션 코드
 int main(int argc, char *argv[])
 {
-    std::string imagePath_n0 = "/home/ns3ai/ns-allinone-3.35/ns-3.35/scratch/SEMDA/data/test_dataset.bin"; // n0 이미지 데이터
-    std::string imagePath_n1 = "/home/ns3ai/ns-allinone-3.35/ns-3.35/scratch/SEMDA/data/test_dataset_transformed.bin"; // n1 이미지 데이터
+    std::string imagePath_n0 = "/home/ns3/ns-allinone-3.35/ns-3.35/scratch/SEMDA/data/test_dataset.bin"; // n0 이미지 데이터
+    std::string imagePath_n1 = "/home/ns3/ns-allinone-3.35/ns-3.35/scratch/SEMDA/data/test_dataset_transformed.bin"; // n1 이미지 데이터
     int imageIndex = 0; // 이미지 인덱스 카운터
     int image_number = 1; // 전송할 총 이미지 수
 
@@ -388,29 +388,4 @@ int main(int argc, char *argv[])
     }
     std::cout << "]\n" << std::endl;
 
-    std::cout << "=============== Actual labels for " << image_number << " images ===============" << std::endl;
-    std::cout << "[";
-    for (int i = 0; i < image_number; i++)
-    {
-        std::cout << LabelBuffer[i];
-        if (i < image_number - 1)
-        {
-            std::cout << ", ";
-        }
-    }
-    std::cout << "]" << std::endl;
-
-    // 정확도 계산
-    int correct_predictions = 0;
-    for (int i = 0; i < image_number; i++)
-    {
-        if (predicted_label[i] == LabelBuffer[i])  // 예측된 라벨과 실제 라벨이 일치하면
-        {
-            correct_predictions++;
-        }
-    }
-
-    float accuracy = (float)correct_predictions / image_number * 100;  // 정확도 계산 (백분율로 표현)
-    std::cout << "=============== Accuracy ===============" << std::endl;
-    std::cout << "Accuracy: " << accuracy << "%" << std::endl;
 }
